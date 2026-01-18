@@ -1,0 +1,51 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h1>Hi there!</h1>
+            <p>
+                Welcome to my blog. This blog will contain some information
+                about me and some posts I want to share with the world.
+            </p>
+            <p>
+                This website is build using Astro framework for content-driven
+                websites. I like it very much, huge thanks to the Astro team for
+                building such an amazing tool!
+            </p>
+            <p>You can contact me on these social medias:</p>
+            <ul>
+                <li>
+                    <a href="https://github.com/shukolza">GitHub</a> @Shukolza
+                </li>
+                <li><a href="https://t.me/shukolza">Telegram</a> @shukolza</li>
+                <li>
+                    <a
+                        href="https://hackclub.enterprise.slack.com/team/U0A9M8ZQL01"
+                        >Hack Club Slack</a
+                    > @Shukolza
+                </li>
+            </ul>
+            <p>
+                Want to create such a website for yourself? Check out <a
+                    href="https://astro.build">Astro framework!</a
+                >
+            </p>
+            <p>
+                This page, among with other pages on this website is always a
+                subject to change.
+            </p>
+        </main>
+        <Footer />
+    </body>
+</html>
