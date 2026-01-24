@@ -1,11 +1,15 @@
 ---
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header>
     <nav>
-        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <div class="title-and-toggle">
+            <h2><a href="/">{SITE_TITLE}</a></h2>
+            <ThemeToggle />
+        </div>
         <div class="internal-links">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
@@ -92,6 +96,13 @@ import HeaderLink from "./HeaderLink.astro";
         padding: 0 1em;
         background: white;
         box-shadow: 0 2px 8px rgba(var(--black), 5%);
+        transition:
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+    :global(html.dark) header {
+        background: #1d1d1f;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 30%);
     }
     h2 {
         margin: 0;
@@ -107,11 +118,24 @@ import HeaderLink from "./HeaderLink.astro";
         align-items: center;
         justify-content: space-between;
     }
+    .title-and-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+    .internal-links {
+        display: flex;
+        gap: 0;
+    }
     nav a {
         padding: 1em 0.5em;
         color: var(--black);
         border-bottom: 4px solid transparent;
         text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    :global(html.dark) nav a {
+        color: rgb(var(--gray-dark));
     }
     nav a.active {
         text-decoration: none;
@@ -120,6 +144,8 @@ import HeaderLink from "./HeaderLink.astro";
     .social-links,
     .social-links a {
         display: flex;
+        align-items: center;
+        gap: 0.5em;
     }
     @media (max-width: 720px) {
         .social-links {

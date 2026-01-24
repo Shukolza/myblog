@@ -49,6 +49,27 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Theme initialization script - runs before render to prevent a flashbang -->
+<script is:inline>
+    try {
+        const savedTheme = localStorage.getItem("theme");
+        const theme =
+            savedTheme ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light");
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        }
+    } catch (e) {
+        // Silently handle any errors (e.g., localStorage unavailable in restricted contexts)
+        // Fall back to system preference
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.classList.add("dark");
+        }
+    }
+</script>
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />

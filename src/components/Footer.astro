@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const today = new Date();
 ---
 
@@ -83,10 +85,12 @@ const today = new Date();
         target="_blank"
         rel="noopener"
     >
-        <img
+        <Image
             src="/abuseipdb-badge.svg"
             alt="AbuseIPDB Contributor Badge"
-            style="height: 87.5px; width: 350px;"
+            width={350}
+            height={88}
+            loading="eager"
         />
     </a>
 </footer>
@@ -96,6 +100,12 @@ const today = new Date();
         background: linear-gradient(var(--gray-gradient)) no-repeat;
         color: rgb(var(--gray));
         text-align: center;
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+    :global(html.dark) footer {
+        background: #1d1d1f;
     }
     .social-links {
         display: flex;

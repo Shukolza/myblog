@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # custom scripts
 deploy.sh
+
+# stuff I don't want to be in the repo XD
+.github/copilot-instructions.md
